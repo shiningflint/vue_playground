@@ -1,9 +1,8 @@
 import Vue from 'vue'
+import App from './App.vue'
 
 const firstVue = new Vue({
-  data: {
-    title: "hello vue!"
-  }
+  render: exec => exec(App)
 })
 
 firstVue.$mount(document.getElementById('app'))

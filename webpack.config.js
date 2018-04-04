@@ -10,11 +10,12 @@ const config = {
   },
   module: {
     rules: [
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+      { test: /\.vue$/, exclude: /node_modules/, loader: "vue-loader" }
     ]
   },
   resolve: {
-    alias: {
+    alias: {// make import Vue from 'vue' directs to the vue.esm.js
       'vue$': 'vue/dist/vue.esm.js'
     }
   },
