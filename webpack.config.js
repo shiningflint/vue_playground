@@ -13,6 +13,11 @@ const config = {
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
     ]
   },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
+  },
   mode: 'development'
 }
 
