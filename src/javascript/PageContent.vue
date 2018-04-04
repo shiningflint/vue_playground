@@ -7,9 +7,9 @@
 
 <script>
   export default {
+    props: ['title'],
     data: function() {
       return {
-        title: "The title is important",
         description: "Contents are the truth, titles suck. You don't actually need to read the title."
       }
     }
