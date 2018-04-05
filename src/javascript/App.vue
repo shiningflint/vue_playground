@@ -7,7 +7,7 @@
     <keep-alive>
       <page-content v-if="page === 'page'" :goToPageDetail="goToPageDetail"></page-content>
     </keep-alive>
-    <form-content v-if="page === 'form'" @changeTitle="title = $event"></form-content>
+    <form-content v-if="page === 'form'" @changeTitle="title = $event" :goToPage="goToPage"></form-content>
     <post-detail v-if="page === 'page-detail'" :blog="selectedBlog"></post-detail>
   </div>
 </template>

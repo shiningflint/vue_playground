@@ -22,6 +22,12 @@
 <script>
   import { EventBus } from './EventBus'
   export default {
+    props: {
+      goToPage: {
+        type: Function,
+        required: true
+      }
+    },
     data: function() {
       return {
         titleInput: "",
@@ -37,6 +43,7 @@
         }
         EventBus.$emit('post-new-blog', blogItem)
         this.resetInput()
+        this.goToPage()
       },
       resetInput() {
         this.titleInput = ""
