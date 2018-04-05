@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "server": "webpack-dev-server --open",
-    "build": "set NODE_ENV='production'&&webpack -p"
+    "build": "set NODE_ENV='production'&&webpack -p",
+    "sass-watch": "sass --watch src/scss/index.scss:dist/index.css",
+    "sass-build": "sass src/scss/index.scss:dist/index.css"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

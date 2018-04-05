@@ -1,36 +1,46 @@
 <template>
   <div class="page-content">
-    <h1>{{ formTitle }}</h1>
+    <h1>Form title is here</h1>
     <form class="form">
-      <input type="text" name="page-title" v-model="titleInput">
-      <button type="button" name="button" @click="handleClick">{{ submitBtn }}</button>
-      <p>{{ titleInput }}</p>
+      <div>
+        <label>
+          <p>Title</p>
+          <input type="text" name="page-title" v-model="titleInput" placeholder="Insert title here">
+        </label>
+      </div>
+      <div>
+        <label>
+          <p>Content</p>
+          <textarea name="name" rows="8" cols="80" v-model="contentInput" placeholder="Insert content here"></textarea>
+        </label>
+      </div>
+      <button type="button" name="button" @click="handleClick">Post</button>
     </form>
   </div>
 </template>
 
 <script>
+  import { EventBus } from './EventBus'
   export default {
-    props: {
-      changeTitle: {
-        type: Function,
-        required: true
-      }
-    },
     data: function() {
       return {
-        formTitle: "Form title is here",
-        submitBtn: "Update the page title",
-        titleInput: ""
+        titleInput: "",
+        contentInput: ""
       }
     },
     methods: {
       handleClick() {
-        this.changeTitle(this.titleInput)
+        const blogItem = {
+          id: Date.now(),
+          title: this.titleInput === "" ? "No Title" : this.titleInput,
+          content: this.contentInput === "" ? "No Content" : this.contentInput
+        }
+        EventBus.$emit('post-new-blog', blogItem)
         this.resetInput()
       },
       resetInput() {
         this.titleInput = ""
+        this.contentInput = ""
       }
     }
   }
